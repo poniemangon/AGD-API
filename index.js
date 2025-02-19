@@ -3,10 +3,14 @@ const express = require('express');
 const cron = require('node-cron');
 const fs = require('fs');
 const path = require('path');
+const cors = require('cors'); // Importar CORS
 
 // Configuración de la aplicación Express
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Habilitar CORS para todas las rutas
+app.use(cors());
 
 // Ruta para obtener las cotizaciones desde el archivo JSON
 app.get('/quotes', (req, res) => {
@@ -60,7 +64,6 @@ const updateQuotes = async () => {
 
     saveQuotesToJson(quotes);
 };
-// Función para hacer ping a la API y mantenerla viva
 
 // Programar el scraping para que se ejecute dos veces al día (a las 9:00 AM y 9:00 PM)
 cron.schedule('0 9,21 * * *', updateQuotes); // 9:00 AM y 9:00 PM
@@ -71,5 +74,3 @@ app.listen(PORT, () => {
     // Realizar el primer scraping al iniciar la aplicación
     updateQuotes();
 });
-
-
