@@ -10,7 +10,9 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Habilitar CORS para todas las rutas
-app.use(cors());
+
+app.use(cors({ origin: '*' })); // Permite acceso desde cualquier origen
+
 
 // Ruta para obtener las cotizaciones desde el archivo JSON
 app.get('/quotes', (req, res) => {
