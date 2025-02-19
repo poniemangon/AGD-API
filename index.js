@@ -30,7 +30,7 @@ const fetchYahooFinanceData = async (symbol) => {
         return {
             symbol,
             price: quote.regularMarketPrice,
-            changesPercent: quote.regularMarketChangePercent
+            percent: quote.regularMarketChangePercent
         };
     } catch (error) {
         console.error(`Error fetching data for ${symbol}:`, error);
