@@ -25,7 +25,7 @@ const fetchYahooFinanceData = async (symbol) => {
 
 // Ruta para obtener las cotizaciones en tiempo real
 app.get('/quotes', async (req, res) => {
-    const symbols = ['AGD.AX', 'AGLD.V']; // Símbolos de Austral Gold en Yahoo Finance
+    const symbols = ['AGD.AX', 'AGLD.V', 'AGLDF', 'GC=F', 'SI=F']; // Símbolos de Austral Gold en Yahoo Finance
     
     let quotes = [];
     
